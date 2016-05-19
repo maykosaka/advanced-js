@@ -11,27 +11,22 @@ for retrieving properties (dot notation and brackets).
 */
 
 
-
-var monkeys = [
+// corrected in class#7 5/17
+var monkeysArray = [
 	{name: 'Tom', species: 'chimpanzee', foodsEaten: 'banana'},
 	{name: 'Don', species: 'orangutan', foodsEaten: 'orange'},
 	{name: 'Ron', species: 'gorilla', foodsEaten: 'apple'},
 ];
 
-eatSomething(thingAsString);
-
-var introduce = function() {
-	for (i = 0; i < monkeys.length; i++) {
-		console.log('Hello my name is ' + name[i] '. I am a ' + species[i] '. I just ate ' + foodsEaten[i] '.')
-	}
+var monkey = {
+	eatSomething: function(thingAsString) {
+	},
+	introduce: function() {
+		for (i = 0; i < monkeysArray.length; i++) {
+		console.log('Hello my name is ' + monkeysArray[i].name + '. I am a ' + monkeysArray[i].species + '. I just ate ' + monkeysArray[i]['foodsEaten'] + '.');
+		}
+	},
 }
+
 introduce();
-
-
-
-
-
-function declaration: need a name. The name below is ‘add'
-function add(a,b) { a+b }
-
-speak('arf arf') /
+eatSomething();
