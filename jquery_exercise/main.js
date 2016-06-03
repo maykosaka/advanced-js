@@ -14,7 +14,7 @@ taskTracker.addTask = function(list, task) {
   var $listItem = $('<li></li>');
   // further define li
   $listItem.html('<input type="checkbox" /><span>' + task.val() + '</span>');
-  list.append($listItem); // ABOVE ADD .trim to remove whitespace
+  list.append($listItem);
   task.val('');
 }
 
