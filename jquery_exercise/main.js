@@ -47,7 +47,7 @@ $(function() {
   });
 
   // add event listener/handler to checkboxes
-  $list.on('click','input:checkbox',function(event) { // why doesn't prevent default work here?
+  $list.on('click','input:checkbox',function(event) {
     taskTracker.toggleCompleted(event); // pass event (click) to method
   });
 
