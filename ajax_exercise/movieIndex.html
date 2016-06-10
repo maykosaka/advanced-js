@@ -5,15 +5,14 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
   <div id="Data"> </div>
-  <input type="button" name="button" id="movieBtn" value="Movie info">
+  <input type="button" name="button" id="movieBtn" value="Get movie info">
 
   <script id="entryTemplate" type="text/x-handlebars-templates">
+    <h1>{{image}}</h1>
     <h1>{{title}}</h1>
-    <p>{{year}}</p>
-    <p>{{imdb}}</p>
-    <p>{{type}}</p>
+    <p>Year: {{year}}</p>
+    <p>Type: {{type}}</p>
     <br></br>
   </script>
 
