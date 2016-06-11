@@ -10,8 +10,6 @@ Exercise your monkeys by retrieving their properties and using their methods. Pr
 for retrieving properties (dot notation and brackets).
 */
 
-
-// corrected in class#7 5/17
 var monkeysArray = [
 	{name: 'Tom', species: 'chimpanzee', foodsEaten: 'banana'},
 	{name: 'Don', species: 'orangutan', foodsEaten: 'orange'},
