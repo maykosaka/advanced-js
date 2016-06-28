@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+	<form>
+		<input type="text" name="city" value="City" id="userCityName">
+		<input type="submit" name="Submit" value="Get forecast" id="theWeather">
+	</form>
+
+	<script id="forecast-template" type="text/x-handlebars-template">
+		<div>
+			<p>In 24 hours the weather in {{city}} will be {{weatherDescr}} with a high of {{highTemp}} Fahrenheit</p>
+		</div>
+	</script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="main.js" type="text/javascript" charset="utf-8" async defer></script>
+
+</body>
+</html>
