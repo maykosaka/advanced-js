@@ -8,6 +8,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
   <!-- custom scripts -->
   <script src="main.js"></script>
+  <!-- CSS link -->
+  <link rel="stylesheet" href="normalize.css">
 </head>
 <body>
   <p>Enter a movie</p>
@@ -22,11 +24,11 @@
     <h1>{{title}}</h1>
     <p>Year: {{year}}</p>
     <p>Type: {{type}}</p>
-    <a class="poster-link" href="http://www.imdb.com/title/{{imdb}}/" target="_blank">IMDB Page</a>
+    <a class="poster-link" href="http://www.imdb.com/title/{{imdb}}/" target="_blank">IMDB info</a>
 
     <br></br>
   </script>
 
-  <ol id="messages-list"></ol>
+  <ul id="messages-list"></ul>
 </body>
 </html>

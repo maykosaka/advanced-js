@@ -8,7 +8,7 @@ $(document).ready(function() {
 
 
 
-  // CREATE + READ functionality
+  // user Submits movie name, it searches OMDB, and returns movies that match
   $('#message-form').submit(function(event) {
     // prevents page refresh
     event.preventDefault();
@@ -17,12 +17,9 @@ $(document).ready(function() {
     var message = $('#message').val().trim();
     console.log(message);
 
-    var messagesReference = myDBReference.child('messages');
-    messagesReference.push({
-      message: message
-    });
-
+    // AJAX call to get movie info from OMDB, dynamically append to DOM
     var omdbUrl = 'http://www.omdbapi.com/?s=';
+
     $.ajax({
       url: omdbUrl + message,
       type: 'GET',
@@ -37,35 +34,58 @@ $(document).ready(function() {
             for(var i = 0; i < movieObject.Search.length; i++) {
               // define data object
               var context = {
-                //image: "http://img.omdbapi.com/?i=" + movieObject.Search[i].imdbID + "&apikey=e46b1fbe", Old API key doesn't work anymore
                 image: "http://img.omdbapi.com/?i=" + movieObject.Search[i].imdbID + "&apikey=7fe29f8b",
                 title: movieObject.Search[i].Title,
                 year: movieObject.Search[i].Year,
                 type: movieObject.Search[i].Type
               }
-              // print movie info to DOM
+              // send movie info to DOM
               var html = template(context);
               $('body').append(html);
-            } // end of loop
+            } // end of for loop
 
-        }
+
+            // CREATE: when user Clicks movie image from the selection, write it's title to database
+            $('.movie-image').click(function(event) {
+              // prevents page refresh
+              event.preventDefault();
+
+              // var title = movieObject.Search[this].Title;    doesn't work
+              // grab that movie title, which should be the next node in DOM
+              var title = $(this).next().text();
+              var image = movieObject.Search[this].Poster;
+              var messagesReference = myDBReference.child('faves');
+              messagesReference.push({
+                image: image,
+                title: title
+                });
+
+            })
+
+        } // end of if statement
+
         else {
-          alert("Sorry the movie doesn't exist in our database. Please try another.");
+          alert("Sorry, " + message + " doesn't exist in our database. Please try another movie.");
         }
         
+/*
+// Firebase documentation:
+function writeUserData(userId, name, email) {
+  firebase.database().ref('users/' + userId).set({
+    username: name,
+    email: email
+  });
+}*/
+
       } // end of success function
 
-      /* something's wrong w my erorr msg
+      /* something's wrong w my ajax erorr msg
       error: function(movieObject) {
         console.log(movieObject);
       }*/
 
-    // clear Input field
-    //$('#message') = '';
-
     }); // end of ajax call
 
-  }); // end of CREATE + READ functionality
-
+  }); // end of Submit function
 
 });
