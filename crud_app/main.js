@@ -45,22 +45,50 @@ $(document).ready(function() {
             } // end of for loop
 
 
+/*
             // CREATE: when user Clicks movie image from the selection, write it's title to database
             $('.movie-image').click(function(event) {
               // prevents page refresh
               event.preventDefault();
+              console.log('.movie-image');
 
-              // var title = movieObject.Search[this].Title;    doesn't work
-              // grab that movie title, which should be the next node in DOM
-              var title = $(this).next().text();
-              var image = movieObject.Search[this].Poster;
+            for(var i = 0; i < movieObject.Search.length; i++) {
+              // define data object
+              var
+                image = "http://img.omdbapi.com/?i=" + movieObject.Search[i].imdbID + "&apikey=7fe29f8b",
+                title = movieObject.Search[i].Title,
+                year = movieObject.Search[i].Year,
+                type = movieObject.Search[i].Type;
+// TO DO: move this part out of the for loop, but keep inside the movie click
+// add ONLY the 1 movie to the DB, not all movies
               var messagesReference = myDBReference.child('faves');
               messagesReference.push({
                 image: image,
-                title: title
+                title: title,
+                year: year,
+                type: type
+                });
+            } // end of for loop
+*/
+            // CREATE: when user Clicks movie image from the selection, write it's title to database
+            $('.movie-image').click(function(event) {
+              // prevents page refresh
+              event.preventDefault();
+              // grab that movie title, which should be the next node in DOM.  THIS WORKED BUT DOESN'T ADD ALL INFO
+              //var image = movieObject.Search[this].Poster;    no Poster of undefined
+              var image = $(this).html();  // empty string
+              var title = $(this).next().text();
+              var year = $(this).next().next().text();
+              var type = $(this).next().next().next().text();
+              var messagesReference = myDBReference.child('faves');
+              messagesReference.push({
+                image: image,
+                title: title,
+                year: year,
+                type: type
                 });
 
-            })
+            }) // end of ('.movie-image').click
 
         } // end of if statement
 
